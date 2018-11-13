@@ -1,0 +1,30 @@
+
+Compartment size is 5 wide by 6.5 high<br><br>DATA<br>***********************************************************<br>
+<br>Reel Model: SM211001-412-8-S-6
+<br>REEL price: 7312<br>
+Dimensions (inches): 35.63 x 27.88 x 25         Weight: 395<br>
+Maximum cable stacking is 4.0290089 wide by 5.237712 high<br>
+Maximum length of cable that will fit in compartment (ft) = 74.37714<br>
+Recommended factor of safety (cable diameters) = 0.8<br>
+Recommended cable stacking is 4 wide by 4 high<br>
+Length of cable lost due to 1st clearance wrap (ft) = 20.07371<br>
+Length of cable lost due to 2nd clearance wrap (ft) = 0<br>
+Length of cable lost due to 3rd clearance wrap (ft) = 0<br>
+Recommended length of cable to be placed in the compartment (ft) = 54.30343<br>
+Length of cable lost due to 1 dead wrap(s) = 2.41929<br>
+Maximum length of active cable handled by compartment (ft) = 51.88414<br>
+Cable clearance with safety margin (inches) = 1.536<br>
+Cable clearance without 1st wrap of safety margin (inches) = 0.295<br>
+Cable clearance without 2nd wrap of safety margin (inches) = 0<br>
+Cable clearance without 3rd wrap of safety margin (inches) = 0<br>
+<br>Cable compartment limit summary:<br><br>
+	maximum cable stacking is 4 Rows of 4<br>
+	maximum length of cable (ft) = 74.37714<br>
+	maximum active length of cable (ft) = 51.88414<br>Spring turns limit summary:<br>
+	maximum cable stacking is 4 rows of 4 and 1 row of 0<br>
+	maximum length of cable (ft) =54.30187<br>
+	maximum active length of cable (ft) = 52<br>Spring torque limit (on stretch) summary:<br>
+	maximum stretch length (ft) = 8.06688<br>
+	maximum cable stacking is 1 rows of 4 and 1 row of 0<br>
+	maximum length of cable (ft) = 9.67714<br>
+	maximum active legnth of cable (ft) = 7.25786<br>Cable required for hook-up/safety wrap(s): 5 feet<br><br><br>

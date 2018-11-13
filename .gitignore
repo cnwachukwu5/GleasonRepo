@@ -1,0 +1,12 @@
+#Composer
+vendor
+composer.phar
+
+#ide
+.idea
+
+.DS_Store
+web.config
+
+gleason_original_source
+sqlfiles

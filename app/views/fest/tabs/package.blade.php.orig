@@ -1,0 +1,327 @@
+<div class="form-horizontal">
+  <h3>Cables and Hoses</h3>
+  <div>
+    <strong>Select a package from the table below or create another package.</strong>
+    <br>
+    <select id="packageSelect" name="package[]" class="form-control">
+      <option value="-1">New</option>
+    </select>
+    <br><br>
+
+  </div>
+  <div id="new">
+    <form method="post" action="{{ url('/packages/add') }}">
+      <label for="packageName"><strong>What is the name for this package?</strong></label>
+      <input type="text" name="packageName" value="Name" class="form-control" />
+      <br><br>
+      <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal" data-keyboard="false" data-backdrop="static" href="{{ url('/cable/select') }}" id="addCable">Add CABLE</a>
+      <a class="btn btn-primary btn-xs marginleft" data-toggle="modal" data-target="#modal" data-keyboard="false" data-backdrop="static" href="{{ url('/hose/select') }}" id="addHose">Add HOSE</a>
+      <table id="cables-table" class="table table-striped table-responsive">
+        <thead>
+          <tr>
+            <th>Quantity</th>
+            <th>Style</th>
+            <th>Type</th>
+            <th>AWG</th>
+            <th>Cond</th>
+            <th>Volts</th>
+            <th>PSI</th>
+            <th>ID/Width</th>
+            <th>OD/Thickness</th>
+            <th>Bend Radius</th>
+            <th>Weight</th>
+            <th>$/Ft</th>
+            <th>PN</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <input type="submit" class="btn btn-primary"\>
+    </form>
+  </div>
+  <div id="existing" style="display: none;">
+    <form method="post" action="{{ url('/packages/update') }}">
+      <p>These are the cables/hoses in this package.</p>
+      <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal" href="{{ url('/cable/select') }}" data-keyboard="false" data-backdrop="static" id="addCable-existing">Add CABLE</a>
+      <a class="btn btn-primary btn-xs marginleft" data-toggle="modal" data-target="#modal" href="{{ url('/hose/select') }}" data-keyboard="false" data-backdrop="static" id="addHose-existing">Add HOSE</a>
+      <table id="cables-table-existing" class="table table-striped table-responsive">
+        <thead>
+          <tr>
+            <th>Quantity</th>
+            <th>Style</th>
+            <th>Type</th>
+            <th>AWG</th>
+            <th>Cond</th>
+            <th>Volts</th>
+            <th>PSI</th>
+            <th>ID/Width</th>
+            <th>OD/Thickness</th>
+            <th>Bend Radius</th>
+            <th>Weight</th>
+            <th>$/Ft</th>
+            <th>PN</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <input id="packageid" hidden name="packageid" \>
+      <input type="submit" class="btn btn-primary" value="Save"\>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+var pnx;
+var typex;
+var vx;
+var condx;
+var awgx;
+var qtyx;
+var cableSet = false;
+var existingPackage = false;
+function addItem(array){
+  $("#addCable-existing").attr("disabled",true);
+  $("#addHose-existing").attr("disabled",true);
+  $("#addCable").attr("disabled",true);
+  $("#addHose").attr("disabled",true);
+<<<<<<< HEAD
+=======
+      if(cableSet){
+      removeItemFn();
+      }
+      //if this is an existing package...
+      if(existingPackage){
+
+        for(var i = 0; i < arry.length; i++)
+        {
+          $("#cables-table-existing").find('tbody')
+
+               .append($("<td/>", {id:"identifier"+i})
+                   .append(
+                     arry[i]
+                   )
+               );
+         }
+         $("#cables-table-existing").find('tbody').append($('<a id="removeItem" class="btn btn-primary btn-xs" onclick="removeItemFn()"><span class="glyphicon glyphicon-remove"></span></a><a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal" href="{{ url('/cable/select') }}" id="editItem-existing" onclick="editpls()" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>'));
+         $("#cables-table-existing").find('tbody').append($('<input hidden id="inputQuantity" name="quantity" value="' + qty + '"/>')).append($('<input id="inputPN" hidden name="pn" value="' + removeGR(pn) + '"/>')).append($('<input hidden name="customerid" value="' + customerid + '"/>'));
+      }
+      else{
+        alert(customerid);
+        for(var i = 0; i < arry.length; i++)
+        {
+          $("#cables-table").find('tbody')
+
+               .append($("<td/>", {id:"identifier"+i})
+                   .append(
+                     arry[i]
+                   )
+               );
+         }
+
+         $("#cables-table").find('tbody').append($('<a id="removeItem" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove" onclick="removeItemFn()"></span></a><a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal" href="{{ url('/cable/select#partnumber=pn') }}" id="editItem" class="btn btn-primary btn-xs" onclick="editpls()"><span class="glyphicon glyphicon-pencil"></span></a>'));
+         $("#cables-table").find('tbody').append($('<input hidden id="inputQuantity" name="quantity" value="' + qty + '"/>')).append($('<input id="inputPN" hidden name="pn" value="' + removeGR(pn) + '"/>')).append($('<input hidden name="customerid" value="' + customerid + '"/>'));
+      }
+
+      cableSet = true;
+>>>>>>> 6b339d7a69bbc0896fbbd6c53effd94c340e0d9a
+
+  var qty = array[0];
+  var pn = array[array.length-1];
+  //if this is an existing package...
+  if(existingPackage){
+    //Then put it in the cables-table-existing table
+    for(var i = 0; i < array.length; i++)
+    {
+      $("#cables-table-existing").find('tbody')
+
+           .append($("<td/>", {id:"identifier"+i})
+               .append(
+                 array[i]
+               )
+           );
+     }
+     //If AWG is set, then it must be cable and therefore when the edit button is clicked it should open up the cable modal.
+     if(array[3] != null) {
+       $("#cables-table-existing").find('tbody').append($('<a id="removeItem" class="btn btn-primary btn-xs" onclick="removeItem()"><span class="glyphicon glyphicon-remove"></span></a><a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal" href="{{ url('/cable/select') }}" id="editItem-existing" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>'));
+     }
+     else {
+       //Otherwise open up the hose modal.
+       $("#cables-table-existing").find('tbody').append($('<a id="removeItem" class="btn btn-primary btn-xs" onclick="removeItem()"><span class="glyphicon glyphicon-remove"></span></a><a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal" href="{{ url('/hose/select') }}" id="editItem-existing" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>'));
+     }
+
+     $("#cables-table-existing").find('tbody').append($('<input id="inputQuantity" hidden name="quantity" value="' + qty + '"/>')).append($('<input id="inputPN" hidden name="pn" value="' + removeGR(pn) + '"/>')).append($('<input hidden name="customerid" value="' + customerid + '"/>'));
+  }
+  else{
+    //If not, then put it in the cables-table table.
+    for(var i = 0; i < array.length; i++)
+    {
+      $("#cables-table").find('tbody')
+
+           .append($("<td/>", {id:"identifier"+i})
+               .append(
+                 array[i]
+               )
+           );
+     }
+     //if AWG is set, then it must be a cable and therefore when the edit button is clicked it should open up the cable modal.
+     if(array[3] != null) {
+       $("#cables-table").find('tbody').append($('<a id="removeItem" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove" onclick="removeItem()"></span></a><a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal" href="{{ url('/cable/select#partnumber=pn') }}" id="editItem" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>'));
+     }
+     else {
+       //Otherwise open up the hose modal.
+       $("#cables-table").find('tbody').append($('<a id="removeItem" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove" onclick="removeItem()"></span></a><a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal" href="{{ url('/hose/select#partnumber=pn') }}" id="editItem" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>'));
+     }
+
+     $("#cables-table").find('tbody').append($('<input hidden id="inputQuantity" name="quantity" value="' + qty + '"/>')).append($('<input id="inputPN" hidden name="pn" value="' + removeGR(pn) + '"/>')).append($('<input hidden name="customerid" value="' + customerid + '"/>'));
+  }
+  cableSet = true;
+
+<<<<<<< HEAD
+=======
+function editpls(){
+  //removeItemFn();
+  //alert("EEEE");
+
+>>>>>>> 6b339d7a69bbc0896fbbd6c53effd94c340e0d9a
+}
+
+//modified the name of this function
+function removeItem(){
+      $("td").remove();
+      $("#removeItem").remove();
+      $("#editItem").remove();
+      $("#removeItem-existing").remove();
+      $("#editItem-existing").remove();
+      $("#inputQuantity").remove();
+      $("#inputPN").remove();
+      $("#addCable-existing").attr("disabled",false);
+      $("#addHose-existing").attr("disabled",false);
+      $("#addCable").attr("disabled",false);
+      $("#addHose").attr("disabled",false);
+      cableSet = false;
+}
+
+
+$('#packageSelect').on('change', function() {
+  if(document.getElementById("packageSelect").selectedIndex == 0)
+  {
+    document.getElementById("new").style.display = "";
+    document.getElementById("existing").style.display = "none";
+    existingPackage = false;
+  }
+  else
+  {
+    document.getElementById("new").style.display = "none";
+    document.getElementById("existing").style.display = "";
+    console
+    existingPackage = true;
+  }
+
+  console.log("Package Select has changed.");
+  removeItem();
+  var packageid = $('#packageSelect').val();
+  var qty = 0;
+  console.log("Value: " + packageid);
+  //If the package is not new...
+  if(packageid != -1) {
+    $('#packageid').val(packageid);
+    $.getJSON("{{ url('/package/get').'/' }}" + packageid, function(data) {
+      qty = data[0].quantity;
+    });
+    $.getJSON("{{ url('/package/cable/get').'/' }}" + packageid, function(data) {
+      var style = data[0].STYLE;
+      var type = data[0].TYPE;
+      var awg = data[0].AWG;
+      var cond = data[0].COND;
+      var volts = data[0].VOLTS;
+      var psi = data[0].PSI;
+      var id = data[0].ID;
+      var od = data[0].OD;
+      var mbr = calcBend(data[0].OD);
+      var weight = data[0].WGT;
+      var price = data[0].REEL_PRICE;
+      var pn = appendGR(data[0].PN);
+      qtyx = qty;
+      pnx = removeGR(pn);
+      var array = [qty, style, type, awg, cond, volts, psi, id, od, mbr, weight, price, pn];
+      console.log(array);
+      addItem(array);
+    });
+  }
+});
+
+
+<<<<<<< HEAD
+
+
+$(function(){
+  $(document).on("click", "#submitItem", function () {
+    var qty = $('#qty').val();
+    var style = $('#style').val();
+    var type = $('#type').val();
+    var awg = $('#awg').val();
+    var cond = $('#conductors').val();
+    var volts = $('#volts').val();
+    var psi = $('#psi').val();
+    var id = $('#insidediameter').val();
+    var od = $('#outsidediameter').val();
+    var mbr = $('#minbendradius').val();
+    var weight = $('#weight').val();
+    var price = $('#price').val();
+    var pn = appendGR($('#partnumber').val());
+    var array = [qty, style, type, awg, cond, volts, psi, id, od, mbr, weight, price, pn];
+
+    removeItem();
+    addItem(array);
+  });
+=======
+$( document ).ready(function() {
+    $( "#packageSelect" ).change(function() {
+      if(document.getElementById("packageSelect").selectedIndex == 0)
+      {
+        document.getElementById("new").style.display = "";
+        document.getElementById("existing").style.display = "none";
+        existingPackage = false;
+      }
+      else
+      {
+        document.getElementById("new").style.display = "none";
+        document.getElementById("existing").style.display = "";
+        existingPackage = true;
+      }
+    });
+});
+
+$(function(){
+$(document).on("click", "#submitCable", function () {
+  var qty = $('#qty').val();
+  var style = "R";
+  var type = $('#type').val();
+  var awg = $('#awg').val();
+  var cond = $('#conductors').val();
+  var volts = $('#volts').val();
+  var psi = $('#psi').val();
+  var id = $('#insidediameter').val();
+  var od = $('#outsidediameter').val();
+  var mbr = $('#minbendradius').val();
+  var weight = $('#weight').val();
+  var price = $('#price').val();
+  var pn = appendGR($('#partnumber').val());
+  var arry = [qty, style, type, awg, cond, volts, psi, id, od, mbr, weight, price, pn];
+
+  removeItemFn();
+
+
+    alert("add1");
+  //  removeItemFn();
+    addCableFn(arry);
+
+
+
+});
+>>>>>>> 6b339d7a69bbc0896fbbd6c53effd94c340e0d9a
+});
+
+
+</script>
